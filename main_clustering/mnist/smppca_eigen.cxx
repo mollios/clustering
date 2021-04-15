@@ -2,7 +2,7 @@
 #include<fstream>
 #include<cstdlib>
 #include<random>
-#include"../../../src/smppca_eigen.h"
+#include"../../src/smppca_eigen.h"
 
 using namespace std;
 #define MAX_ITERATES 100000
@@ -12,7 +12,7 @@ const int centers_number=10;
 const int parameter_number=3;
 
 int main(void){
-  double Em=1.0+1.0e-6;;
+  double Em=1.1;
   double para_Em[3]={1.01, 1.5, 2.5};
   double strideEm=1.0e-1;
   std::string filenameData("./data/image_data/train_0.txt");
@@ -169,7 +169,7 @@ int main(void){
   
 #ifdef CRFILE
   std::string filenameResultMembership
-    =std::string("./debug_data/sMPPCA_eigen/")
+    =std::string("./mnist/sMPPCA_eigen/")
     +std::string("sMPPCA_eigen-")
     +std::to_string(test.fuzzifierEm())+std::string("-")
     +filenameData.substr(filenameDataSlashPosition, filenameDataDotPosition)
@@ -193,7 +193,7 @@ int main(void){
   ofs_membership.close();
 
   std::string filenameResultCenters
-    =std::string("./debug_data/sMPPCA_eigen/")
+    =std::string("./mnist/sMPPCA_eigen/")
     +std::string("sMPPCA_eigen-")
     +std::to_string(test.fuzzifierEm())+std::string("-")
     +filenameData.substr(filenameDataSlashPosition, filenameDataDotPosition)
@@ -213,7 +213,7 @@ int main(void){
   ofs_centers.close();
 
   std::string filenameResultBasis
-    =std::string("./debug_data/sMPPCA_eigen/")
+    =std::string("./mnist/sMPPCA_eigen/")
     +std::string("sMPPCA_eigen-")
     +std::to_string(test.fuzzifierEm())+std::string("-")
     +filenameData.substr(filenameDataSlashPosition, filenameDataDotPosition)

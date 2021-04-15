@@ -46,43 +46,45 @@ void Sfcma::revise_centers(void){
   return;
 }
 
-// void Sfcma::revise_clusters_size(void){
-//   Tmp_Clusters_size=Clusters_size;
-//   double denominator=0.0;
-//   for(int j=0;j<centers_number();j++){
-//     double tmp1=0.0;
-//     for(int k=0;k<data_number();k++){
-//       tmp1+=(pow(Membership[j][k],FuzzifierEm)*Dissimilarities[j][k]);
-//       //std::cout << "tmp1:" << tmp1 << "\t" << std::endl;
-//     }
-//     denominator+=pow(tmp1,(1.0/FuzzifierEm));
-//     //std::cout << "denominator:" << denominator << "\t" << std::endl;
-//   }
-//   for(int i=0;i<centers_number();i++){
-//     double tmp2=0.0;
-//     for(int k=0;k<data_number();k++){
-//       tmp2+=(pow(Membership[i][k],FuzzifierEm)*Dissimilarities[i][k]);
-//       //std::cout << "tmp2:" << tmp2 << "\t" << std::endl;
-//     }
-//     Clusters_size[i]=(pow(tmp2,1.0/FuzzifierEm))/denominator;
-//   }
-//   return;
-// }
-
 void Sfcma::revise_clusters_size(void){
   Tmp_Clusters_size=Clusters_size;
-  for(int i=0;i<centers_number();i++){
-    double denominator=0.0;
-    for(int j=0;j<centers_number();j++){
-      double tmp1=0.0;
-      double tmp2=0.0;
-      for(int k=0;k<data_number();k++){
-        tmp1+=pow(Membership[j][k],FuzzifierEm)*Dissimilarities[j][k];
-        tmp2+=pow(Membership[i][k],FuzzifierEm)*Dissimilarities[i][k];
-      }
-      denominator+=pow(tmp1/tmp2,1.0/FuzzifierEm);
+  double denominator=0.0;
+  for(int j=0;j<centers_number();j++){
+    double tmp1=0.0;
+    for(int k=0;k<data_number();k++){
+      tmp1+=(pow(Membership[j][k],FuzzifierEm)*Dissimilarities[j][k]);
+      //std::cout << "tmp1:" << tmp1 << "\t" << std::endl;
     }
-    Clusters_size[i]=1.0/denominator;
+    denominator+=pow(tmp1,(1.0/FuzzifierEm));
+    //std::cout << "denominator:" << denominator << "\t" << std::endl;
+  }
+  for(int i=0;i<centers_number();i++){
+    double tmp2=0.0;
+    for(int k=0;k<data_number();k++){
+      tmp2+=(pow(Membership[i][k],FuzzifierEm)*Dissimilarities[i][k]);
+      //std::cout << "tmp2:" << tmp2 << "\t" << std::endl;
+    }
+    Clusters_size[i]=(pow(tmp2,1.0/FuzzifierEm))/denominator;
   }
   return;
 }
+
+// void Sfcma::revise_clusters_size(void){
+//   Tmp_Clusters_size=Clusters_size;
+//   for(int i=0;i<centers_number();i++){
+//     double denominator=0.0;
+//     double tmp1=0.0;
+//     for(int j=0;j<centers_number();j++){
+//       double tmp2=0.0;
+//       for(int k=0;k<data_number();k++){
+//         tmp1+=pow(Membership[j][k],FuzzifierEm)*Dissimilarities[j][k];
+//         tmp2+=pow(Membership[i][k],FuzzifierEm)*Dissimilarities[i][k];
+//         std::cout << "tmp1:" << tmp1 << "\t" << std::endl;
+//         std::cout << "tmp2:" << tmp2 << "\t" << std::endl;
+//       }
+//       denominator+=pow(tmp1/tmp2,1.0/FuzzifierEm);
+//     }
+//     Clusters_size[i]=1.0/denominator;
+//   }
+//   return;
+// }

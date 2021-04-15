@@ -3,7 +3,7 @@
 #include<cstdlib>
 #include<random>
 #include<iomanip>
-#include"../../../src/qmppca_eigen.h"
+#include"../../src/qmppca_eigen.h"
 
 using namespace std;
 #define MAX_ITERATES 100000
@@ -180,7 +180,7 @@ int main(void){
   
 #ifdef CRFILE
   std::string filenameResultMembership
-    =std::string("./debug_data/qMPPCA_eigen/")
+    =std::string("./mnist/qMPPCA_eigen/")
     +std::string("qMPPCA_eigen-")
     +std::to_string(test.fuzzifierEm())+std::string("-")
     +std::to_string(test.fuzzifierLambda())+std::string("-")
@@ -205,7 +205,7 @@ int main(void){
   ofs_membership.close();
 
   std::string filenameResultCenters
-    =std::string("./debug_data/qMPPCA_eigen/")
+    =std::string("./mnist/qMPPCA_eigen/")
     +std::string("qMPPCA_eigen-")
     +std::to_string(test.fuzzifierEm())+std::string("-")
     +std::to_string(test.fuzzifierLambda())+std::string("-")
@@ -226,7 +226,7 @@ int main(void){
   ofs_centers.close();
 
   std::string filenameResultBasis
-    =std::string("./debug_data/qMPPCA_eigen/")
+    =std::string("./mnist/qMPPCA_eigen/")
     +std::string("qMPPCA_eigen-")
     +std::to_string(test.fuzzifierEm())+std::string("-")
     +std::to_string(test.fuzzifierLambda())+std::string("-")

@@ -2,7 +2,7 @@
 #include<fstream>
 #include<cstdlib>
 #include<random>
-#include"../../../src/emppca_eigen.h"
+#include"../../src/emppca_eigen.h"
 
 using namespace std;
 #define MAX_ITERATES 100000
@@ -169,7 +169,7 @@ int main(void){
   
 #ifdef CRFILE
   std::string filenameResultMembership
-    =std::string("./debug_data/eMPPCA_eigen/")
+    =std::string("./mnist/eMPPCA_eigen/")
     +std::string("eMPPCA_eigen-")
     +std::to_string(test.fuzzifierLambda())+std::string("-")
     +filenameData.substr(filenameDataSlashPosition, filenameDataDotPosition)
@@ -193,7 +193,7 @@ int main(void){
   ofs_membership.close();
 
   std::string filenameResultCenters
-    =std::string("./debug_data/eMPPCA_eigen/")
+    =std::string("./mnist/eMPPCA_eigen/")
     +std::string("eMPPCA_eigen-")
     +std::to_string(test.fuzzifierLambda())+std::string("-")
     +filenameData.substr(filenameDataSlashPosition, filenameDataDotPosition)
@@ -213,7 +213,7 @@ int main(void){
   ofs_centers.close();
 
   std::string filenameResultBasis
-    =std::string("./debug_data/eMPPCA_eigen/")
+    =std::string("./mnist/eMPPCA_eigen/")
     +std::string("eMPPCA_eigen-")
     +std::to_string(test.fuzzifierLambda())+std::string("-")
     +filenameData.substr(filenameDataSlashPosition, filenameDataDotPosition)

@@ -127,6 +127,7 @@ void Mppca::revise_m(void){
       }
     }
     inv=transpose(Basis[i])*Basis[i]+Sigma[i]*I;
+    std::cout << "inv\n" << inv << std::endl;
     for(int l=0;l<Basis[i].cols();l++){
       M[i][l]=solve(inv,I[l]);
     }
